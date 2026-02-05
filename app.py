@@ -50,10 +50,13 @@ if page == "Data Analytics":
 
     with col_left:
         st.subheader("What kind of stress do they feel?")
-        # Simple Pie Chart
-        fig_pie = px.pie(filtered_df, names='Which type of stress do you primarily experience?',
-                         color_discrete_sequence=px.colors.qualitative.Pastel)
+        # Find this line and add the height parameter:
+        fig_pie = px.pie(filtered_df,
+                         names='Which type of stress do you primarily experience?',
+                         color_discrete_sequence=px.colors.qualitative.Pastel,
+                         height=500)
         st.plotly_chart(fig_pie, use_container_width=True)
+
 
     with col_right:
         st.subheader("Stress Intensity by Age")
@@ -91,7 +94,7 @@ else:
 
     st.subheader("Your Comparison")
 
-    # Very Simple Comparison Bar
+    # Simple Comparison Bar
     comp_df = pd.DataFrame({
         'Who': ['You', 'Average Student'],
         'Anxiety Level': [my_anxiety, avg_anxiety]
